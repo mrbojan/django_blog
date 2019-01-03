@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils import timezone
-from djnago.contrib.auth.models import User
+from django.contrib.auth.models import User
 
 class Post(models.Model):
 	STATUS_CHOICE = (
@@ -14,7 +14,7 @@ class Post(models.Model):
 	publish = models.DateTimeField(default=timezone.now)
 	created = models.DateTimeField(auto_now_add=True)
 	update = models.DateTimeField(auto_now=True)
-	status = models.CharField(max_length=10,choice=Status_Choice,default='draft')
+	status = models.CharField(max_length=10,choices=STATUS_CHOICE,default='draft')
 	
 	class Meta:
 		ordering = ('-publish',)
